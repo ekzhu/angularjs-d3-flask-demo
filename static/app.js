@@ -1,9 +1,19 @@
 // Create the app module and declare its dependencies
 // which includes the rest service module and controller module
-var courseApp = angular.module('courseApp',['studentServices', 'courseAppControllers'])
+var courseApp = angular.module('courseApp',['studentServices', 
+	'courseAppControllers', 'd3directives'])
 
 // Create the controller module, with no dependencies
 var courseAppContrl = angular.module('courseAppControllers',[])
+
+// Generate randomn grade following a normal distribution
+var generate_random_grade = function(u, v) {
+	var nrv = (chance.integer({min:0, max:10}) + chance.integer({min:0, max:10})) / 2
+	var mean = 5
+	var variance = (1/12)*(10 - 0)*(10 - 0)/Math.sqrt(2)
+	var stdnrv = (nrv - mean) / variance
+	return Math.ceil(stdnrv*v + u);
+};
 
 // Create a student table controller, declare depednency on 
 // Students service
@@ -21,8 +31,8 @@ courseAppContrl.controller('StudentList', ['$scope','Students', function($scope,
 		// Create a new student
 		var new_student = {
 			id : max_id + 1,
-			name : "Always this name",
-			grade : 90
+			name : chance.name(),
+			grade : generate_random_grade(65, 30)
 		};
 		// Save the new student
 		Students.save(new_student);
