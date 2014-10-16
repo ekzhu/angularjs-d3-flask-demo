@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" ng-app="courseApp">
+<head>
+  <meta charset="utf-8">
+  <title>University of Tiny Wings</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">  
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6" ng-controller="StudentList">
+        <button class="btn btn-primary" ng-click="generate_random_student(students)">Generate Random Student</button>
+        <table class="table">
+          <thead>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Grade</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <tr ng-repeat="student in students">
+              <td>{{student.id}}</td>
+              <td>{{student.name}}</td>
+              <td>{{student.grade}}</td>
+              <td><button class="btn-xs" ng-click="drop(student)">Drop</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6">
+        
+      </div>
+    </div>
+  </div>
+<!-- AngularJS -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
+<!-- AngularJS Resource module -->
+<script src="https://code.angularjs.org/1.3.0/angular-resource.min.js"></script>
+<!-- jQuery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Our AngularJS modules -->
+<script src="/static/services.js"></script>
+<script src="/static/app.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+</html>
